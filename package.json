@@ -1,0 +1,23 @@
+{
+  "name": "tweets-board",
+  "version": "1.0.0",
+  "description": "a small toy application to practice the MERN stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enriquegiottonini/tweets-board.git"
+  },
+  "author": "Enrique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enriquegiottonini/tweets-board/issues"
+  },
+  "homepage": "https://github.com/enriquegiottonini/tweets-board#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.4.3"
+  }
+}
