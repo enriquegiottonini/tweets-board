@@ -9,19 +9,29 @@ const App = () => {
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/tweets/all").then((response) => {
-      setAllTweets(response.data);
+      setAllTweets(response.data.reverse());
       setLoading(false);
     });
   }, []);
 
-  const addTweet = (tweet) => {
-    setAllTweets([tweet, ...allTweets]);
+  const addTweet = (author, post) => {
+    const newTweet = {
+      date: new Date().toString(),
+      author: author,
+      text: post,
+      likes: 0,
+      dislikes: 0,
+    };
+
+    axios.post("http://localhost:3001/api/add", newTweet).then((response) => {
+      if (response) setAllTweets([response.data, ...allTweets]);
+    });
   };
 
   return (
     <>
       <h1>This is not Twitter.</h1>
-      <PostForm />
+      <PostForm setTweetsState={addTweet} />
       <Board isLoading={isLoading} allTweets={allTweets} />
     </>
   );

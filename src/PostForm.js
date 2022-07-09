@@ -1,8 +1,7 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
 
-const PostForm = () => {
+const PostForm = ({ setTweetsState }) => {
   const [author, setAuthor] = useState("");
   const [post, setPost] = useState("");
 
@@ -10,13 +9,7 @@ const PostForm = () => {
     e.preventDefault();
     if (!author.trim()) setAuthor("Anonimous");
 
-    const tweet = {
-      date: new Date().toString(),
-      author: author,
-      text: post,
-      likes: 0,
-      dislikes: 0,
-    };
+    setTweetsState(author, post);
 
     setAuthor("");
     setPost("");
