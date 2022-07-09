@@ -4,7 +4,8 @@
   "description": "a small toy application to practice the MERN stack.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --mode=development --open --hot",
+    "build": "webpack --mode=production"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,21 @@
   },
   "homepage": "https://github.com/enriquegiottonini/tweets-board#readme",
   "dependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "html-webpack-plugin": "^5.5.0",
     "mongodb": "^4.7.0",
-    "mongoose": "^6.4.3"
+    "mongoose": "^6.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
   }
 }
