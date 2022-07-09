@@ -1,4 +1,4 @@
-const { mongoose } = require("./db");
+const mongoose = require("mongoose");
 
 // Define the tweet Schema
 const tweetSchema = new mongoose.Schema({
@@ -24,6 +24,4 @@ const tweetSchema = new mongoose.Schema({
   },
 });
 
-const Tweet = mongoose.model("Tweet", tweetSchema);
-
-module.exports = { Tweet, mongoose };
+module.exports = mongoose.model("Tweet", tweetSchema);
