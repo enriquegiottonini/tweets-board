@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/add", async (req, res) => {
   const newTweet = new Tweet({
-    date: new Date(req.body.author),
+    date: new Date(req.body.date),
     author: req.body.author,
     text: req.body.text,
     likes: req.body.likes,

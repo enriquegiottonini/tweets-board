@@ -16,11 +16,8 @@ mongoose
     const app = express();
     app.use(cors());
     app.use(express.json());
+    app.use(express.static("build"));
     app.use("/api", routes);
-
-    app.get("/", (req, res) => {
-      res.send("<h1>Home Page</h1>");
-    });
 
     const PORT = process.env.PORT;
 
