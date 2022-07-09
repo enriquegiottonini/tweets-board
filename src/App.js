@@ -1,32 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Tweet from "./Tweet";
-
-let tweetsExample = [
-  {
-    _id: "62c8a0248b1b838039278f0a",
-    date: "2022-07-08T21:22:44.674Z",
-    author: "admin",
-    text: "INSOMNIA",
-    likes: 0,
-    dislikes: 0,
-    __v: 0,
-  },
-  {
-    _id: "62c8bf657707d97e10dca3aa",
-    date: "2022-07-08T23:36:05.690Z",
-    author: "admin",
-    text: "Hello motto",
-    likes: 13,
-    dislikes: 76,
-    __v: 0,
-  },
-];
+import axios from "axios";
 
 const App = () => {
+  const [isLoading, setLoading] = useState(true);
+  const [allTweets, setAllTweets] = useState();
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/tweets/all").then((response) => {
+      setAllTweets(response.data);
+      setLoading(false);
+    });
+  }, []);
+
+  const showTweets = () => {
+    if (isLoading) return <p>Loading ... </p>;
+
+    return (
+      <>
+        {allTweets.map((tweet) => (
+          <div key={tweet._id}>
+            <Tweet tweet={tweet} />
+          </div>
+        ))}
+      </>
+    );
+  };
+
   return (
     <>
       <h1>This is not Twitter.</h1>
-      <Tweet tweet={tweetsExample[0]} />
+
+      <div>{showTweets()}</div>
     </>
   );
 };

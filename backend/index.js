@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const cors = require("cors");
 const routes = require("./routes");
 const { join } = require("path");
 
@@ -13,6 +14,7 @@ mongoose
     console.log("Connected to DB.");
 
     const app = express();
+    app.use(cors());
     app.use(express.json());
     app.use("/api", routes);
 
