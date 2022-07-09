@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Tweet from "./Tweet";
 import axios from "axios";
+import PostForm from "./PostForm";
+import Board from "./Board";
 
 const App = () => {
   const [isLoading, setLoading] = useState(true);
@@ -13,25 +14,15 @@ const App = () => {
     });
   }, []);
 
-  const showTweets = () => {
-    if (isLoading) return <p>Loading ... </p>;
-
-    return (
-      <>
-        {allTweets.map((tweet) => (
-          <div key={tweet._id}>
-            <Tweet tweet={tweet} />
-          </div>
-        ))}
-      </>
-    );
+  const addTweet = (tweet) => {
+    setAllTweets([tweet, ...allTweets]);
   };
 
   return (
     <>
       <h1>This is not Twitter.</h1>
-
-      <div>{showTweets()}</div>
+      <PostForm />
+      <Board isLoading={isLoading} allTweets={allTweets} />
     </>
   );
 };
