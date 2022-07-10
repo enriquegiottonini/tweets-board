@@ -12,6 +12,14 @@ module.exports = {
       react: path.join(__dirname, "node_modules", "react"),
     },
   },
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:8081",
+        router: () => "http://localhost:3001",
+      },
+    },
+  },
   module: {
     rules: [
       {
