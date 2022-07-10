@@ -3,9 +3,11 @@ import axios from "axios";
 import PostForm from "./PostForm";
 import Board from "./Board";
 
+const TWEETS_PER_SLIDE = 3;
 const App = () => {
   const [isLoading, setLoading] = useState(true);
   const [allTweets, setAllTweets] = useState();
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     axios.get(`/api/tweets/all`).then((response) => {
@@ -32,7 +34,12 @@ const App = () => {
     <>
       <h1>This is not Twitter.</h1>
       <PostForm setTweetsState={addTweet} />
-      <Board isLoading={isLoading} allTweets={allTweets} />
+      <Board
+        isLoading={isLoading}
+        tweets={allTweets}
+        currentPage={currentPage}
+        setPage={setCurrentPage}
+      />
     </>
   );
 };

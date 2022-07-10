@@ -5,7 +5,13 @@ import axios from "axios";
 const Tweet = ({ tweet }) => {
   const { _id, author, text } = tweet;
 
-  const date = new Date(tweet.date).toString();
+  var options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const date = new Date(tweet.date).toLocaleDateString("en-US", options);
 
   const [likes, setLikes] = useState(tweet.likes);
   const [dislikes, setDislikes] = useState(tweet.dislikes);
@@ -28,9 +34,8 @@ const Tweet = ({ tweet }) => {
     <div>
       <hr></hr>
       <div>
-        <p>id: {_id}</p>
-        <p>Date: {date}</p>
-        <p>Author: {author}</p>
+        <p>{date}</p>
+        <h2>{author}: </h2>
       </div>
 
       <div>
