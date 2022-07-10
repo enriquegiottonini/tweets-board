@@ -15,7 +15,7 @@ const Tweet = ({ tweet }) => {
   useEffect(() => {
     if (newLikes + newDislikes >= 1) {
       console.log(newDislikes);
-      axios.patch(`http://localhost:3001/api/tweet/${_id}`, {
+      axios.patch(`/api/tweet/${_id}`, {
         likes: newLikes,
         dislikes: newDislikes,
       });

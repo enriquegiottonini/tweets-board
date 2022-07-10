@@ -8,7 +8,7 @@ const App = () => {
   const [allTweets, setAllTweets] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/tweets/all").then((response) => {
+    axios.get(`/api/tweets/all`).then((response) => {
       setAllTweets(response.data.reverse());
       setLoading(false);
     });
@@ -23,7 +23,7 @@ const App = () => {
       dislikes: 0,
     };
 
-    axios.post("http://localhost:3001/api/add", newTweet).then((response) => {
+    axios.post(`/api/add`, newTweet).then((response) => {
       if (response) setAllTweets([response.data, ...allTweets]);
     });
   };
