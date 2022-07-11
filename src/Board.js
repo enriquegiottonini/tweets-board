@@ -1,6 +1,6 @@
 import React from "react";
 import Tweet from "./Tweet";
-const TWEETS_PER_SLIDE = 5;
+const TWEETS_PER_SLIDE = 4;
 const Board = ({ isLoading, tweets, currentPage, setPage }) => {
   if (isLoading) return <p>Loading ... </p>;
 
