@@ -3,7 +3,6 @@ import axios from "axios";
 import PostForm from "./PostForm";
 import Board from "./Board";
 
-const TWEETS_PER_SLIDE = 3;
 const App = () => {
   const [isLoading, setLoading] = useState(true);
   const [allTweets, setAllTweets] = useState();
@@ -32,14 +31,34 @@ const App = () => {
 
   return (
     <>
-      <h1>This is not Twitter.</h1>
-      <PostForm setTweetsState={addTweet} />
-      <Board
-        isLoading={isLoading}
-        tweets={allTweets}
-        currentPage={currentPage}
-        setPage={setCurrentPage}
-      />
+      <nav className=" navbar navbar-toggleable-md fixed-top"></nav>
+
+      <div className="container-fluid main-content">
+        <div className="row-fluid profile-background">
+          <div className="container">
+            <h1 className="title">This is not Twitter.</h1>
+          </div>
+
+          <nav className="navbar profile-stats ">
+            <div className="container">whitespace</div>
+          </nav>
+
+          <div className="span3">
+            <div className="well sidebar-nav">
+              <PostForm setTweetsState={addTweet} />
+            </div>
+          </div>
+
+          <div className="span9">
+            <Board
+              isLoading={isLoading}
+              tweets={allTweets}
+              currentPage={currentPage}
+              setPage={setCurrentPage}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

@@ -15,7 +15,7 @@ const PostForm = ({ setTweetsState }) => {
     setPost("");
   };
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <label>
           author:
@@ -40,7 +40,7 @@ const PostForm = ({ setTweetsState }) => {
         </label>
         <button type="submit">post</button>
       </form>
-    </>
+    </div>
   );
 };
 
